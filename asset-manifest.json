@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/deepaksajwan01/react-player/static/css/main.5851d7a3.chunk.css",
+    "main.js": "/deepaksajwan01/react-player/static/js/main.bd165463.chunk.js",
+    "main.js.map": "/deepaksajwan01/react-player/static/js/main.bd165463.chunk.js.map",
+    "runtime-main.js": "/deepaksajwan01/react-player/static/js/runtime-main.003afce0.js",
+    "runtime-main.js.map": "/deepaksajwan01/react-player/static/js/runtime-main.003afce0.js.map",
+    "static/js/2.a446843c.chunk.js": "/deepaksajwan01/react-player/static/js/2.a446843c.chunk.js",
+    "static/js/2.a446843c.chunk.js.map": "/deepaksajwan01/react-player/static/js/2.a446843c.chunk.js.map",
+    "static/js/3.ab671aa5.chunk.js": "/deepaksajwan01/react-player/static/js/3.ab671aa5.chunk.js",
+    "static/js/3.ab671aa5.chunk.js.map": "/deepaksajwan01/react-player/static/js/3.ab671aa5.chunk.js.map",
+    "index.html": "/deepaksajwan01/react-player/index.html",
+    "static/css/main.5851d7a3.chunk.css.map": "/deepaksajwan01/react-player/static/css/main.5851d7a3.chunk.css.map",
+    "static/js/2.a446843c.chunk.js.LICENSE.txt": "/deepaksajwan01/react-player/static/js/2.a446843c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.003afce0.js",
+    "static/js/2.a446843c.chunk.js",
+    "static/css/main.5851d7a3.chunk.css",
+    "static/js/main.bd165463.chunk.js"
+  ]
+}
