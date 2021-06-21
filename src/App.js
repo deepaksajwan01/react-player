@@ -37,10 +37,19 @@ function App() {
     played: 0,
     seeking: false,
     currentMark: 0,
+    playedSeconds: 0,
   })
   const [timeDisplayFormat, setTimeDisplayFormat] = useState("normal")
   const classes = useStyles()
-  const { playing, muted, volume, playbackRate, played, currentMark } = state
+  const {
+    playing,
+    muted,
+    volume,
+    playbackRate,
+    played,
+    currentMark,
+    playedSeconds,
+  } = state
 
   const handlePlayPause = () => {
     setState({ ...state, playing: !state.playing })
@@ -81,7 +90,8 @@ function App() {
     screenfull.toggle(playerContainerRef.current)
   }
   const handleProgress = (changeState) => {
-    if (count > 3) {
+    console.log("changeState: ", changeState)
+    if (count > 10) {
       controlRef.current.style.visibility = "hidden"
       count = 0
     }
@@ -89,7 +99,6 @@ function App() {
       count += 1
     }
     // console.log(count)
-    // console.log("changeState: ", changeState)
 
     /* check for if we the current state has the bookmark time  */
     /* update the current bookmark */
@@ -104,12 +113,14 @@ function App() {
   }
 
   const handleSeekChange = (e, newValue) => {
-    // console.log("handleSeekChange", newValue)
-    // console.log(playerRef.current.played)
+    console.log("handleSeekChange new value", newValue)
+    // console.log(playerRef.current.getDuration())
+    // console.log(Math.ceil(playerRef.current.getDuration()))
     if (!state.seeking) {
       setState({
         ...state,
-        played: parseFloat(newValue / 100),
+        played: parseFloat(newValue),
+        // played: parseFloat(newValue),
       })
     }
   }
@@ -127,7 +138,7 @@ function App() {
       ...state,
       seeking: false,
     })
-    playerRef.current.seekTo(newValue / 100)
+    playerRef.current.seekTo(newValue)
   }
 
   const handleChangeDisplayFormat = () => {
@@ -147,6 +158,10 @@ function App() {
       ? format(currentTime)
       : `-${format(duration - currentTime)}
   `
+
+  const totalDurationMinutes = playerRef.current
+    ? Math.ceil(playerRef.current.getDuration())
+    : ""
   const totalDuration = format(duration)
 
   const handleMouseMove = () => {
@@ -157,7 +172,8 @@ function App() {
   const createMarkers = () => {
     // const totalDuration = 14
     const marks = bookmarks.map((bookmark) => {
-      const val = (bookmark / 14) * 100
+      // const val = (bookmark / 14) * 100
+      const val = bookmark * 60
       return { value: val }
     })
     return marks
@@ -186,6 +202,10 @@ function App() {
     console.log("currentMark", currentMark)
   }
 
+  // let totalDurationMinutes = 0
+  // if (playerRef.current) {
+  //   totalDurationMinutes = Math.ceil(playerRef.current.getDuration())
+  // }
   return (
     <>
       <Toolbar />
@@ -232,6 +252,8 @@ function App() {
             onBookMarkChangeNext={handleBookMarkChangeNext}
             onBookMarkChangePrevious={handleBookMarkChangePrevious}
             marks={marks}
+            totalDurationMinutes={totalDurationMinutes}
+            playedSeconds={playedSeconds}
           />
         </div>
       </Container>

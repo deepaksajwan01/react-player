@@ -128,6 +128,8 @@ export default forwardRef(function PlayersControl(
     onBookMarkChangeNext,
     onBookMarkChangePrevious,
     marks,
+    totalDurationMinutes,
+    playedSeconds,
   },
   ref
 ) {
@@ -150,6 +152,7 @@ export default forwardRef(function PlayersControl(
   // const val = parseInt(totalDuration)
   // console.log(typeof val, val * 60)
   // console.log("currennt val", played * 100)
+  // console.log("total-duration in seconds", totalDurationMinutes)
 
   return (
     <div className={classes.controlWrapper} ref={ref}>
@@ -212,14 +215,16 @@ export default forwardRef(function PlayersControl(
       >
         <Grid item xs='12'>
           <PrettoSlider
-            min={0}
-            max={100}
+            // min={0}
+            max={totalDurationMinutes}
             step={1}
-            value={played * 100}
+            min={0}
+            // max={100}
+            value={Math.ceil(playedSeconds)}
+            marks={marks}
             ValueLabelComponent={(props) => (
               <ValueLabelComponent {...props} value={elapsedTime} />
             )}
-            marks={marks}
             onChange={onSeek}
             onMouseDown={onSeekMouseDown}
             onChangeCommitted={onSeekMouseUp}
