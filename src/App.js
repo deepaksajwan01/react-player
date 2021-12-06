@@ -4,7 +4,9 @@ import screenfull from "screenfull"
 import { Toolbar, Container } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import PlayersControl from "./components/PlayersControl"
+import CustomSlider from "./components/CustomSlider"
 import "./App.css"
+import "./components/customSlider.css"
 
 const useStyles = makeStyles({
   mainContainer: {
@@ -256,6 +258,12 @@ function App() {
             playedSeconds={playedSeconds}
           />
         </div>
+        <CustomSlider
+          onSeek={handleSeekChange}
+          onSeekMouseDown={handleOnSeekMouseDown}
+          onSeekMouseUp={handleOSeekMouseUp}
+          playedSeconds={playedSeconds}
+        />
       </Container>
     </>
   )
